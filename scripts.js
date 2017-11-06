@@ -6,7 +6,7 @@ function Card(value, index, face, back) {
 
     this.flip = function() {
         var el = document.getElementById('dealerCard1').src;
-        el.src = this.face;
+        el.src = Card.face;
     }
 }
 
@@ -79,11 +79,11 @@ function Deck(cardArray) {
         var hitButton = document.getElementById('hit'):
         var target = e.target;
         if (target = dealButton) {
-            Player.handArray.push(randomCard); //Player gets random card 1
+            Player.handArray.push(randomCard); //Player gets random card 1...  not confident in this whole block
             Deck.cardArray.splice(randomIndex, 1);//card is removed from cardArray
             Player.handArray.push(randomCard);//Player card 2
             Deck.cardArray.splice(randomIndex, 1);
-            Dealer.handArray.push(randomCard);//Dealer gets random card 2
+            Dealer.handArray.push(randomCard);//Dealer gets random card 1
             Deck.cardArray.splice(randomIndex, 1);//card is removed from cardArray
             Dealer.handArray.push(randomCard);//Dealer card 2
             Deck.cardArray.splice(randomIndex, 1);
@@ -97,14 +97,34 @@ function Deck(cardArray) {
 }
 
 //Constructor for Player object:
-function Player(bankValue, betValue, handArray) {
+function Player(bankValue, betValue, handArray, handValue) {
     this.bankValue = bankValue;
     this.betValue = betValue;
     this.handArray = handArray;
+    this.handValue = handValue;
 
     this.calcPlayerHand = function() {
-        this.handValue =
+        var total = 0;
+        for (counter=0; counter<Player.handArray.length; counter++) { // not confident in this
+            total += Player.handArray[counter];//this either
+        }
     }
 }
 
-function Dealer()
+//Constructor for Dealer object:
+function Dealer(handValue, handArray) {
+    this.handValue = handValue;
+    this.handArray = handArray;
+
+    this.calcDealerHand() = function() {
+        var total = 0;
+        for (counter=0; counter,Dealer.handArray.length; counter++) { // not confident in this
+            total += Dealer.handArray[counter]; //this either
+        }
+    }
+    this.alertWinLose = function() {
+        if (/*greater than dealer but !> 21*/) {
+            $('#winLoseMsg').show(); //need to create two separate messages...  obviously
+        }
+    }
+}
