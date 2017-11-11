@@ -10,31 +10,31 @@ function Card(s, n) {
         return this.number;
     };
     this.getValue = function() {
-        if ((this.number % 13) > 10 || (this.number % 13) === 0) {
+        if ((this.number % 13) > 10 || (this.number % 13) === 0) { //If it's a face card make it worth 10
             return 10;
-        } if ((this.number % 13) === 1) {
+        } if ((this.number % 13) === 1) { //If it's an ace make it worth 11
           return 11;
         } else {
-            return this.number % 13;
+            return this.number % 13; //Everything else is worth it's face value
         }
     };
     this.imageFilename = function() {
-        var imageString = this.suit + '_' + this.number + '.png';
+        var imageString = this.suit + '_' + this.number + '.png'; //This is an idea I'm working on to change the src attribute of an img tag to display our random cards
         return imageString;
     };
 }
 
 //new deal:
 var deal = function() {
-    var randomSuit = Math.floor((Math.random() * 4) + 1);
-    var randomNumber = Math.floor((Math.random() * 13) + 1);
+    var randomSuit = Math.floor((Math.random() * 4) + 1); //This picks the suit
+    var randomNumber = Math.floor((Math.random() * 13) + 1); //This picks an index that will identify the specific card within the suit
     return new Card(randomSuit, randomNumber);
 };
 
 function Hand() {
-    var handArray = [];
+    var handArray = [];//hand starts empty
 
-    handArray.push(deal());
+    handArray.push(deal()); 
     handArray.push(deal());
 
     this.getHand = function() {
@@ -45,20 +45,20 @@ function Hand() {
         var sum = 0;
         var aces = 0;
         for (i=0; i<handArray.length; i++) {
-            x=handArray[i].getValue();
-            if (x === 11) {
+            x=handArray[i].getValue();  //gets the value of each item in handArray
+            if (x === 11) { //If item is an ace it keeps track of how many aces you have in aces variable
                 aces++;
                 sum += x;
             }
             else {sum += x;}
         }
-        while (sum > 21 && aces > 0) {
-            sum -= 10;
-            aces--;
-        }
+        while (sum > 21 && aces > 0) { //If the sum is greater than 21 and you have one or more aces...
+            sum -= 10; // decrease sum by 10 
+            aces--; // decrease lowerable aces by 1
+        } // repeat until sum is less than 21 or out of aces.
         return sum;
     };
-    this.printHand = function() {
+    this.printHand = function() { //right now this is printing a strick with our hand result but I suspect this will need to change significantly in order to display card images instead of generate strings
         var string = '';
         for (i=0; i < handArray.length; i++) {
             var card = handArray[i];
