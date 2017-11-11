@@ -1,0 +1,193 @@
+body {
+    background-color: black;
+}
+
+#pageContent {
+    position: relative;
+}
+
+p {
+    color: white;
+}
+
+#currentValueDealer {
+    color: white;
+    position: relative;
+    z-index: 5;
+    left: 100px;
+    top: 180px;
+}
+
+#currentValuePlayer {
+    color: white;
+    position: relative;
+    z-index: 4;
+    left: 100px;
+    top: 500px;
+}
+
+#playerCard1 {
+    height: 209px;
+    width: 150px;
+    position: relative;
+    z-index: 2;
+    left: 0px;
+
+}
+
+#playerCard2 {
+    height: 209px;
+    width: 150px;
+    position: absolute;
+    z-index: 2;
+    left: 50px;
+}
+
+#playerCard3 {
+    height: 209px;
+    width: 150px;
+    position: absolute;
+    z-index: 2;
+    left: 100px;
+}
+
+#playerCard4 {
+    height: 209px;
+    width: 150px;
+    position: absolute;
+    z-index: 2;
+    left: 150px;
+
+}
+
+#playersArea {
+    background-color: red;
+    height: 209px;
+    width: 320px;
+    position: absolute;
+    top: 420px;
+    left: 500px;
+    /*padding-top: 100px;
+    padding-bottom: 150px;
+    visibility: hidden;*/
+}
+
+#dealersArea {
+    background-color: red;
+    height: 209px;
+    width: 320px;
+    position: absolute;
+    left: 500px;
+    /*visibility: hidden;
+    padding-bottom: 150px;*/
+}
+
+#dealerCard1 {
+    height: 209px;
+    width: 150px;
+    position: absolute;
+    z-index: 3;
+    left: 1px;
+
+    padding-bottom: 150px;
+}
+
+#dealerCard2 {
+    height: 209px;
+    width: 150px;
+    position: absolute;
+    z-index: 3;
+    left: 50px;
+
+    padding-bottom: 150px;
+}
+
+#dealerCard3 {
+    height: 209px;
+    width: 150px;
+    position: absolute;
+    z-index: 3;
+    left: 100px;
+
+    padding-bottom: 150px;
+}
+
+#dealerCard4 {
+    height: 209px;
+    width: 150px;
+    position: absolute;
+    z-index: 3;
+    left: 150px;
+
+    padding-bottom: 150px;
+}
+
+#buttonPanel {
+    position: absolute;
+    z-index: 6;
+    left: 550px;
+    top: 480px;
+    padding-bottom: 50px;
+    padding-top: 200px;
+}
+
+#winLoseMsg {
+    text-align: center;
+    position: absolute;
+    z-index: 7;
+    left: 440px;
+    top: 320px;
+    color: gold;
+}
+
+#cashAmount {
+    color: gold;
+    position: relative;
+    z-index: 9;
+    align-content: center;
+    top: -100px;
+    left: 180px;
+    line-height: 50%;
+    /*width: 100px;
+    border-width: 5px;
+    border-style: dashed;
+    background-color: lightgreen;
+    float: left;*/
+}
+
+#betAmount {
+    color: gold;
+    position: relative;
+    z-index: 8;
+    line-height: 50%;
+    top: -200px;
+    left: 950px;
+    /*width: 100px;
+    border-width: 5px;
+    border-style: dashed;
+    background-color: lightgreen;
+    float: right;*/
+}
+
+#bottomNav {
+    position: absolute;
+    top: 730px;
+    z-index: 8;
+    top: -250;*/
+}
+
+#pageContent {
+    width: 1200px;
+    margin: auto;
+
+}
+
+#felt {
+    height: 950px;
+    width: 1200px;
+    position: absolute;
+    z-index: 1;
+    top: -100px;
+    visibility: visible;
+
+}
