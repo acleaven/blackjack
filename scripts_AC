@@ -1,7 +1,7 @@
 //Card object:
 function Card(s, n) {
-    this.suit = s;
-    this.number = n;
+    this.suit = s; //Every card gets a suit number 1-4
+    this.number = n; //Every card gets an index number 1-13
 
     this.getSuit = function() {
         return this.suit;
