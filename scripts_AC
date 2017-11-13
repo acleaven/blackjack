@@ -24,12 +24,45 @@ function Card(s, n) {
     };
 }
 
+//Deck object adapted from Sukima on GitHub: https://gist.github.com/sukima/2294904
+var Deck = function () {
+    var full_deck = [];
+    for (i=1; i <= 52; i++) {
+        full_deck.push(i);
+    }
+    this.shuffle = function() {
+        var i,j,x;
+        for (i = full_deck.length - 1; i>0; i--) {
+            j = Math.floor(Math.random() * i);
+            x = full_deck[i];
+            full_deck[i] = full_deck[j];
+            full_deck[j] = x;
+        }
+    };
+    
+    this.getNewCard = function() {
+        var card_num = full_deck.pop();
+        var val = (card_num % 13) + 1;
+        var suit = Math.floor((Math.random() * 4) + 1);
+        return new Card(suit, val);
+    };
+};
+
+function deal() {
+    return game_deck.getNewCard();
+}
+
+
+/*
 //new deal:
 var deal = function() {
     var randomSuit = Math.floor((Math.random() * 4) + 1); //This picks the suit
     var randomNumber = Math.floor((Math.random() * 13) + 1); //This picks an index that will identify the specific card within the suit
     return new Card(randomSuit, randomNumber);
 };
+*/
+
+
 
 function Hand() {
     var handArray = [];//hand starts empty
