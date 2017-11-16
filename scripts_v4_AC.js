@@ -4,11 +4,11 @@ var deckArray = [0, 1, 2, 3];
 var handArray = [];
 
 var hitMe = function() {
-    $('#hit').on('click', function() {//need to figure out how to get this to pull values from deckArray, not just
+    $('#hit').on('click', function() {
         var shiftCard = deckArray.shift();
         handArray.push(shiftCard);
         var index = handArray[handArray.length - 1];
-        $('#playersArea').prepend('<img class=playingCards src="images/' + index + '.png" />');//append is attaching new image tags immediately after opening div tag
+        $('#playersArea').prepend('<img class=playingCards src="images/' + index + '.png" />');
         $('.playingCards').nextAll().css({paddingLeft: "+=55px", zIndex: "+=10"});
 
     });
