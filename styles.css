@@ -165,7 +165,7 @@ p {
     color: gold;
 }
 
-#cashAmount {
+#cashDiv {
     color: gold;
     position: relative;
     z-index: 9;
@@ -180,7 +180,7 @@ p {
     float: left;*/
 }
 
-#betAmount {
+#betDiv {
     color: gold;
     position: relative;
     z-index: 8;
