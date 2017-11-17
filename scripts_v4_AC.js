@@ -14,13 +14,6 @@ var shuffleDeck = function() {
         var randomCard = unshuffledDeck.slice(randomNum, (randomNum +1));
         deckArray.push(randomCard);
     }
-
-    unshuffledDeck.slice(randomNum, (randomNum +1));
-    deckArray.push(randomCard);
-
-    //for (i=0; i<51, i++) {
-    //    deckArray.push(randomCard);
-    //}
 };
 
 ///////////////////////////////////
