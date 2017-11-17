@@ -5,23 +5,24 @@
     <title>BlackJack</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 </head>
 
 <body>
 <div id="pageContent">
-    <div id="currentValueDealer">
-        <h2>Current Value Dealer:</h2>
+    <div>
+        <h2 id="currentValueDealer">Current Value Dealer:</h2>
     </div>
 
-    <div id="currentValuePlayer">
-        <h2>Current Value Player:</h2>
+    <div>
+        <h2 id="currentValuePlayer">Current Value Player:</h2>
     </div>
 
     <div id="dealersArea">
-        <img id="dealerCard1" src="images/back.png">
+        <!--<img id="dealerCard1" src="images/back.png">
         <img id="dealerCard2" src="images/C2.png">
         <img id="dealerCard3" src="images/D3.png">
-        <img id="dealerCard4" src="images/C3.png">
+        <img id="dealerCard4" src="images/C3.png">-->
     </div>
     <div>
         <h1 id="winLoseMsg">
@@ -29,17 +30,18 @@
         </h1>
     </div>
     <div id="playersArea">
-        <img id="playerCard1" src="images/HK.png">
+        <!--<img id="playerCard1" src="images/HK.png">
         <img id="playerCard2" src="images/D4.png">
         <img id="playerCard3" src="images/S4.png">
-        <img id="playerCard4" src="images/HQ.png">
+        <img id="playerCard4" src="images/HQ.png">-->
 
     </div>
 
     <div id="buttonPanel">
         <button id="deal">Deal</button>
         <button id="hit">Hit</button>
-        <button id="stay">Stay</button>
+        <button id="stand">Stand</button>
+        <button id="reset">Reset</button>
     </div>
     <div id="bottomNav">
         <div id="cashAmount">
@@ -56,6 +58,6 @@
     </div>
     <img id="felt" src="images/felt_background.png" style="z-index: 1">
 </div>
-<script src="scripts.js"></script>
+<script src="scripts_v4.js"></script>
 </body>
 </html>
