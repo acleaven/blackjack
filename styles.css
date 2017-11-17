@@ -14,17 +14,20 @@ p {
     color: white;
     position: relative;
     z-index: 5;
-    left: 100px;
+    left: 350px;
     top: 180px;
+    visibility: hidden;
 }
 
 #currentValuePlayer {
     color: white;
     position: relative;
     z-index: 4;
-    left: 100px;
-    top: 500px;
+    left: 350px;
+    top: 450px;
+    visibility: hidden;
 }
+
 
 #playerCard1 {
     height: 209px;
@@ -58,29 +61,49 @@ p {
     z-index: 2;
     left: 150px;
 
+
+
 }
 
 #playersArea {
-    background-color: red;
+    background-color: black;
     height: 209px;
     width: 320px;
     position: absolute;
     top: 420px;
     left: 500px;
+    visibility: visible;
     /*padding-top: 100px;
     padding-bottom: 150px;
-    visibility: hidden;*/
+    */
 }
 
 #dealersArea {
-    background-color: red;
+    background-color: black;
     height: 209px;
     width: 320px;
     position: absolute;
     left: 500px;
-    /*visibility: hidden;
-    padding-bottom: 150px;*/
+    visibility: visible;
+    /*padding-bottom: 150px;*/
 }
+
+.playerCards {
+    height: 209px;
+    width: 150px;
+    position: absolute;
+    z-index: 200;
+}
+
+
+.dealerCards {
+    height: 209px;
+    width: 150px;
+    position: absolute;
+    z-index: 200;
+}
+
+
 
 #dealerCard1 {
     height: 209px;
@@ -121,6 +144,8 @@ p {
 
     padding-bottom: 150px;
 }
+
+
 
 #buttonPanel {
     position: absolute;
