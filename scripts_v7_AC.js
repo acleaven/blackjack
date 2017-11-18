@@ -66,7 +66,7 @@ function PlayerObject() {
         $('#dealerCard-0').html(dealer.getScore());
     };
 
-    this.getValue = function(index) {  ////This logic needs attention, combined with the order of cards/indexNums in image folder
+    this.getValue = function(index) {
         if ((index % 13) > 10 || (index % 13) === 0) {
             return 10;
         } if ((index % 13) === 1) {
@@ -81,7 +81,7 @@ function PlayerObject() {
         var sum = 0;
         var aces = 0;
         for (i=0; i<whichHand.length; i++) {
-            x = getValue(whichHand[i]);
+            x = this.getValue(whichHand[i]);
             if (x === 11) {
                 aces++;
                 sum += x;
