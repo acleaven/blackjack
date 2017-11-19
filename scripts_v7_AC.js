@@ -1,3 +1,15 @@
+/*
+Blackjack homework assignment
+Team members:
+Chris Bonk
+Andy Cleavenger
+John Morabito
+
+Andy wrote the DeckObject, including the shuffleDeck() function, as well as the getValue() and score()
+portions of the PlayerObject. Chris wrote the rest of the PlayerObject, and all of the BankObject. John and Andy
+wrote the game play functions in tandem.
+*/
+
 ////DeckObject/////////////////////////
 
 function DeckObject() {
