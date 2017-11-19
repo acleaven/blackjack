@@ -122,7 +122,8 @@ $(document).ready(function() {
         var pHand = playerHand.hand;
         var index = pHand[pHand.length - 1];
         $('#playersArea').prepend('<img class=playerCards src="images/' + index + '.png" />');//append is attaching new image tags immediately after opening div tag
-        $('.playerCards').nextAll().css({position: "absolute", left: "+=55px", zIndex: "+=10"});
+        $('.playerCards').nextAll().css({position: "absolute", left: "-=55px", zIndex: "-=10"});
+        $('#playersArea').css({position: "absolute", left:"+=55px"});
     };
 
     var printDealerCards = function() {
@@ -131,7 +132,8 @@ $(document).ready(function() {
         var dHand = dealerHand.hand;
         var index = dHand[dHand.length - 1];
         $('#dealersArea').prepend('<img class=dealerCards src="images/' + index + '.png" />');//append is attaching new image tags immediately after opening div tag
-        $('.dealerCards').nextAll().css({position: "absolute", left: "+=55px", zIndex: "+=10"});
+        $('.dealerCards').nextAll().css({position: "absolute", left: "-=55px", zIndex: "-=10"});
+        $('#dealersArea').css({position: "absolute", left:"+=55px"});
     };
 
     var currentValuePlayer = document.getElementById('currentValuePlayer');
