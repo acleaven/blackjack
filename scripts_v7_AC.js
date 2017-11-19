@@ -5,11 +5,12 @@ function DeckObject() {
     this.deckArray = [];
 
     this.shuffleDeck = function() {
-        for (i=0; i<51; i++) {
+        for (i=0; i<52; i++) {
             var unshuffledLength = this.unshuffledDeck.length;
             var randomNum = Math.floor(Math.random() * unshuffledLength);
-            var randomCard = this.unshuffledDeck.slice(randomNum, (randomNum +1)); // see if problem lies in
+            var randomCard = this.unshuffledDeck[randomNum];
             this.deckArray.push(randomCard);
+            this.unshuffledDeck.splice(randomNum, 1);
         }
     };
 
