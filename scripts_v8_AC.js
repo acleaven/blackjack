@@ -139,13 +139,13 @@ function BankObject() {
     $('#increase').click(function () {
         if (bet < cash) {
             bet += 100;
-            bank.updateCashBet();
+            updateCashBet();
         }
     });
     $('#decrease').click(function () {
         if (bet > 100) {
             bet -= 100;
-            bank.updateCashBet();
+            updateCashBet();
         }
     });
     */
@@ -239,7 +239,7 @@ $(document).ready(function() {
     $('#stand').hide();
     $('#reset').hide();
 
-    
+
     var printPlayerCards = function() {
         var shiftCard = gameDeck.getCard();
         playerHand.setHand(shiftCard);
@@ -290,8 +290,12 @@ $(document).ready(function() {
         $('#dealersArea').css({position: "absolute", left:"+=55px"});
     };
 
-    $('#increase').on('click', bank.increaseBet());
-    $('#decrease').on('click', bank.decreaseBet());
+    $('#increase').on('click', function() {
+        bank.increaseBet();
+    });
+    $('#decrease').on('click', function() {
+        bank.decreaseBet();
+    });
 
     var flipCard = function() {
         var dHand = dealerHand.hand;
