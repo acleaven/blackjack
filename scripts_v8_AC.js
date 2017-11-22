@@ -116,7 +116,7 @@ function PlayerObject() {
 function BankObject() {
 
     var cash = 1000;
-    var bet = 0;
+    bet = 0;
     //var playerHand = 20; //Used to test gameplay
     //var dealerHand = 21; //Used to test gameplay
 
@@ -149,6 +149,7 @@ function BankObject() {
         }
     });
     */
+
 
     this.updateCashBet = function() {
         $('#betAmount').text('$' + bet.toString());
@@ -238,6 +239,7 @@ $(document).ready(function() {
     $('#stand').hide();
     $('#reset').hide();
 
+    
     var printPlayerCards = function() {
         var shiftCard = gameDeck.getCard();
         playerHand.setHand(shiftCard);
@@ -339,8 +341,7 @@ $(document).ready(function() {
         flipCard();
         while (dealerHand.score(dealerHand.hand) < 17) {
             hitDealer();
-            $('#reset').show();
-            //declareWinner();
+
         }
     };
 
@@ -362,29 +363,73 @@ $(document).ready(function() {
 
     $('#hit').on('click', function() {
         hitMe();
+
+        var pHand = playerHand.score(playerHand.hand);
+        var dHand = dealerHand.score(dealerHand.hand);
+
+        if (pHand >= 21) {
+            $('#reset').show();
+            if (dHand <= 21) {
+                if (dHand === pHand) {
+                    bank.drawGame();
+                }
+                else {
+                    bank.loseGame();
+                }
+            } else {
+                return;
+            }
+        }
+
+
     });
 
     $('#stand').on('click', function() {
-        //flipCard();
         finishDealerHand();
         $('#hit').hide();
         $('#stand').hide();
+        $('#reset').show();
+
+        var pHand = playerHand.score(playerHand.hand);
+        var dHand = dealerHand.score(dealerHand.hand);
+
+        if (pHand <= 21) {
+            if (pHand > dHand) {
+                bank.winGame();
+            }
+            else {
+                if (dHand <= 21) {
+                    if (dHand === pHand) {
+                        bank.drawGame();
+                    }
+                    else {
+                        bank.loseGame();
+                    }
+                }
+            }
+            if (dHand > 21) {
+                bank.winGame();
+            }
+        }
+        else {
+            bank.loseGame();
+        }
     });
 
 
     $("#reset").click(function(){   //john
         var pCurrentHand = playerHand.hand;
         var dCurrentHand = dealerHand.hand;
-        gameDeck.deckArray.push(pCurrentHand.slice(0));
-        gameDeck.deckArray.push(dCurrentHand.slice(0));
+        gameDeck.unshuffledDeck.push(pCurrentHand.slice(0));
+        gameDeck.unshuffledDeck.push(dCurrentHand.slice(0));
         playerHand.resetHandValue();
         dealerHand.resetHandValue();
         $("#playersArea").empty(); // Maybe push all cards from hands back into unshuffledDeck
         $("#dealersArea").empty(); // Still need to figure out how to zero out score. Maybe just call printDealerScore again to provoke a zero?
         $('.cardAreas').css({left:"450px"});
-        playerHand.resetScore(playerHand.hand); // maybe try pop()?
+        //playerHand.resetScore(playerHand.hand); // maybe try pop()?
         printPlayerScore();
-        dealerHand.resetScore(dealerHand.hand);
+        //dealerHand.resetScore(dealerHand.hand);
         printDealerScore();
         $('#reset').hide();
         $('#deal').show();
@@ -397,7 +442,8 @@ $(document).ready(function() {
 /////////////////////////////////
 
 /*
-1. Reset still needs a lot of work.
-2. Attach a declareWinner function at the end of stand button behavior list.
-3. Figure out why increase/decrease buttons don't do anything.
+1. Betting only seems to be working if I use win/lose via the hit button
+2. "Play again" button needs to show and declare winner needs to show if player gets 21(or more) and dealer gets <21
+3. Need to program a Game Over function when player runs out of money.
+4. Figure out why increase/decrease buttons don't do anything.
  */
