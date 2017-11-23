@@ -36,6 +36,11 @@ function DeckObject() { // unshuffledDeck is an array with all the cards in orde
         var shiftCard = this.deckArray.shift(); // stores the value of whatever the first card in deckArray is
         return shiftCard; // returns the value of that card
     };
+
+    this.resetDeck = function() {
+        this.unshuffledDeck = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51];
+        this.deckArray = [];
+    }
 }
 
 //////////////////////////////////
@@ -176,7 +181,7 @@ function BankObject() {
         }
     };
 
-
+    /*
     this.scoreCheck = function(playerHand, dealerHand) { // This whole method not working at the moment
         if (playerHand < 22) {
             if (playerHand > dealerHand) {
@@ -199,7 +204,7 @@ function BankObject() {
         else {
             this.loseGame();
         }
-    }
+    }*/
 }
 
 //////////////////////////////////
@@ -285,22 +290,10 @@ $(document).ready(function() {
         printDealerScore(); // calls the printDealerScore function to refresh the score with the newly upturned card
     };
 
-    var checkBust = function() {
-        if (playerHand.score(playerHand.hand) >= 21) { // if the current playerHand is greater than or equal to 21...
-            $('#hit').hide(); // hide the hit button...
-            $('#stand').hide(); // hide the stand button...
-            finishDealerHand(); // call the function that completes the dealer's hand
-        } if (playerHand.score(playerHand.hand) === 21) { // if the current playerHand is equal to 21...
-            return; //  do nothing
-        } else {
-            return; // if the current playerHand is less than 21 (the only other option) also do nothing
-        }
-    };
 
     var hitMe = function() {
         printPlayerCards(); // calls function that prints a single card to the playerHand
         printPlayerScore(); // calls a function that adds the amount of that card to the present sum
-        checkBust(); // calls a function that checks if the player's hand has exceeded 21
 
     };
 
@@ -329,12 +322,13 @@ $(document).ready(function() {
         }
     };
 
-    var declareWinner = function() {  // not currently using this
 
-    };
-
-    $('#test').on('click', function() { // not currently using this. Was just a test button to check the contents of arrays in an alert box
+    $('#test1').on('click', function() { // not currently using this. Was just a test button to check the contents of arrays in an alert box
         alert(playerHand.hand);
+    });
+
+    $('#test2').on('click', function() { // not currently using this. Was just a test button to check the contents of arrays in an alert box
+        alert(gameDeck.deckArray);
     });
 
     $('#deal').on('click', function() { // calls the deal function when user clicks the deal button
@@ -354,47 +348,25 @@ $(document).ready(function() {
 
 
         if (pHand > 21) {
+            finishDealerHand();
             if (dHand > 21) {
                 bank.drawGame();
+                $('#hit').hide();
+                $('#stand').hide();
                 $('#reset').show();
             }
 
             if (dHand <= 21) {
                 bank.loseGame();
+                $('#hit').hide();
+                $('#stand').hide();
                 $('#reset').show();
             }
-        }
-
-        if (pHand === 21) {
-            if (dHand === 21) {
-                bank.drawGame();
-                $('#reset').show();
-            }
-            if (dHand < pHand) {
-                bank.winGame();
-                $('#reset').show();
-            }
-        }
-        if (pHand < 21) {
+        } if (pHand === 21) { //stand function takes over from here
+            return;
+        } if (pHand < 21) {
             return;
         }
-
-
-        /*
-        if (pHand >= 21) { // if playerHand is greater than or equal to 21...
-            $('#reset').show(); // show the Play Again button...
-            if (dHand <= 21) { // and if the dealerHand is less than or equal to 21...
-                if (dHand === pHand) { // and if the dealerHand is equal to 21...
-                    bank.drawGame(); // call the bank's drawGame method
-                }
-                else { // and if the dealerHand is less than 21 (the only other option for this part of the loop)...
-                    bank.loseGame(); // call the bank's loseGame method
-                }
-            } else { // In looking at this it still needs some attention. I probably did this too late at night.
-                return;
-            }
-        }*/
-
 
     });
 
@@ -432,10 +404,12 @@ $(document).ready(function() {
 
 
     $("#reset").click(function(){   // resets the cards and score, but not the cash amount
-        var pCurrentHand = playerHand.hand; // stores the current playerHand in a variable
-        var dCurrentHand = dealerHand.hand; // stores the current dealerHand in a variable
-        gameDeck.unshuffledDeck.push(pCurrentHand.slice(0)); // pushes the entire contents of current playerHand back into the unshuffledDeck array
-        gameDeck.unshuffledDeck.push(dCurrentHand.slice(0)); // pushes the entire contents of current dealerHand back into the unshuffledDeck array
+        //var pCurrentHand = playerHand.hand; // stores the current playerHand in a variable
+        //var dCurrentHand = dealerHand.hand; // stores the current dealerHand in a variable
+        //gameDeck.unshuffledDeck.push(pCurrentHand); // pushes the entire contents of current playerHand back into the unshuffledDeck array
+        //gameDeck.unshuffledDeck.push(dCurrentHand);// pushes the entire contents of current dealerHand back into the unshuffledDeck array
+        gameDeck.resetDeck();
+        gameDeck.shuffleDeck();
         playerHand.resetHandValue(); // calls the resetHandValue method to define the playerHand array as empty
         dealerHand.resetHandValue(); // calls the resetHandValue method to define the dealerHand array as empty
         $("#playersArea").empty(); // empties the playersArea div of all card img elements
