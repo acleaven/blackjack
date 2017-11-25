@@ -188,6 +188,11 @@ function BankObject() {
 
 $(document).ready(function() {
 
+    $('#directionBox').hide().delay(300).slideDown(1500);
+    $('#closer').on('click', function() {
+        $('#directionBox').slideUp(1500);
+    });
+
     /////Instantiated objects:
     var gameDeck = new DeckObject(); // instantiates the DeckObject
     gameDeck.shuffleDeck(); // shuffles the deck
