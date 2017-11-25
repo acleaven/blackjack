@@ -227,3 +227,92 @@ p {
     visibility: visible;
 
 }
+
+#directionBox {
+    height: 450px;
+    width: 700px;
+    position: relative;
+    left: 250px;
+    top: 30px;
+    background: limegreen;
+    border: 2px solid darkgreen;
+    border-radius: 20px;
+    opacity: 0.75;
+    z-index: 200;
+    font-family: Avenir;
+}
+
+#directionMsg {
+    color: white;
+    margin: 40px;
+}
+
+#directionHead {
+    color: black;
+    text-align: center;
+}
+
+#closer {
+    text-align: center;
+    margin-right: 10px;
+    margin-top: 8px;
+    cursor: pointer;
+    color: yellow;
+
+}
+
+#deal {
+    font-size: 16pt;
+    height: 50px;
+    width: 100px;
+    top: -50px;
+    color: darkgreen;
+    background: limegreen;
+    border: 2px solid darkgreen;
+    border-radius: 10px;
+    font-family: "Avenir";
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#hit {
+    font-size: 16pt;
+    height: 50px;
+    width: 100px;
+    top: -50px;
+    color: brown;
+    background: gold;
+    border: 2px solid darkgreen;
+    border-radius: 10px;
+    font-family: "Avenir";
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#stand {
+    font-size: 16pt;
+    height: 50px;
+    width: 100px;
+    top: -50px;
+    color: brown;
+    background: gold;
+    border: 2px solid darkgreen;
+    border-radius: 10px;
+    font-family: "Avenir";
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#reset {
+    font-size: 16pt;
+    height: 50px;
+    width: 150px;
+    top: -50px;
+    color: navajowhite;
+    background: brown;
+    border: 2px solid black;
+    border-radius: 10px;
+    font-family: "Avenir";
+    font-weight: bold;
+    cursor: pointer;
+}
