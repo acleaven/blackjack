@@ -271,7 +271,7 @@ p {
     border: 2px solid darkgreen;
     border-radius: 10px;
     font-family: "Avenir";
-    font-weight: bold;
+    font-weight: normal;
     cursor: pointer;
 }
 
@@ -280,12 +280,12 @@ p {
     height: 50px;
     width: 100px;
     top: -50px;
-    color: brown;
+    color: #ac8f1a;
     background: gold;
-    border: 2px solid darkgreen;
+    border: 2px solid #c4a320;
     border-radius: 10px;
     font-family: "Avenir";
-    font-weight: bold;
+    font-weight: normal;
     cursor: pointer;
 }
 
@@ -294,12 +294,12 @@ p {
     height: 50px;
     width: 100px;
     top: -50px;
-    color: brown;
+    color: #ac8f1a;
     background: gold;
-    border: 2px solid darkgreen;
+    border: 2px solid #c4a320;
     border-radius: 10px;
     font-family: "Avenir";
-    font-weight: bold;
+    font-weight: normal;
     cursor: pointer;
 }
 
@@ -308,11 +308,11 @@ p {
     height: 50px;
     width: 150px;
     top: -50px;
-    color: navajowhite;
+    color: #e87a6f;
     background: brown;
-    border: 2px solid black;
+    border: 2px solid #760f11;
     border-radius: 10px;
     font-family: "Avenir";
-    font-weight: bold;
+    font-weight: normal;
     cursor: pointer;
 }
