@@ -26,7 +26,7 @@ p {
     position: relative;
     z-index: 5;
     left: 350px;
-    top: 180px;
+    top: 130px;
     visibility: hidden;
 }
 
@@ -35,7 +35,7 @@ p {
     position: relative;
     z-index: 4;
     left: 350px;
-    top: 450px;
+    top: 400px;
     visibility: hidden;
 }
 
@@ -44,7 +44,7 @@ p {
     height: 209px;
     width: 320px;
     position: absolute;
-    top: 420px;
+    top: 365px;
     left: 450px;
     visibility: visible;
 
@@ -56,6 +56,7 @@ p {
     width: 320px;
     position: absolute;
     left: 450px;
+    top: 50px;
     visibility: visible;
 
 }
@@ -80,7 +81,7 @@ p {
     position: absolute;
     z-index: 6;
     left: 550px;
-    top: 480px;
+    top: 420px;
     padding-bottom: 50px;
     padding-top: 200px;
 }
@@ -90,7 +91,7 @@ p {
     position: absolute;
     z-index: 7;
     left: 540px;
-    top: 320px;
+    top: 275px;
     color: gold;
 }
 
@@ -99,7 +100,7 @@ p {
     position: relative;
     z-index: 9;
     align-content: center;
-    top: -100px;
+    top: -130px;
     left: 180px;
     line-height: 50%;
 
@@ -110,7 +111,7 @@ p {
     position: relative;
     z-index: 8;
     line-height: 50%;
-    top: -200px;
+    top: -230px;
     left: 950px;
 
 }
