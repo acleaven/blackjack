@@ -166,9 +166,17 @@ function BankObject() { // Object constructor for bank object
 
 $(document).ready(function() { // When browser has loaded the document run all of the following functions:
 
+    $('#cashDiv').hide();
+    $('#betDiv').hide();
+    $('#buttonPanel').hide();
+
+
     $('#directionBox').hide().delay(300).slideDown(1500); // This animates in the user directions when the page first loads
     $('#closer').on('click', function() { // This closes the directions when the user clicks the words "play game"
         $('#directionBox').slideUp(1500);
+        $('#cashDiv').show();
+        $('#betDiv').show();
+        $('#buttonPanel').show();
     });
 
     /////Instantiated objects and setup:
