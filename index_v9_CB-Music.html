@@ -1,0 +1,90 @@
+<!-- Blackjack homework assignment.
+Team members:
+Chris Bonk
+Andy Cleavenger
+John Morabito
+
+Division of tasks:
+Chris and John wrote most of the framework for the HTML. Chris created the player and dealer areas
+for the cards, and John created the button panel and cash/bet amount areas. The page contents were
+altered a bit by Andy as he was working on the CSS, mostly to add or change the locations of IDs/classes.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BlackJack</title>
+    <audio id="backgroundMusic" src="backMusic.mp3"></audio>
+    <audio id="winNoise" src="winMusic.mp3"></audio>
+
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <script src="jquery.js"></script>
+
+</head>
+
+<body onload="soundPlayPause()">
+<div id="pageContent">
+    <div>
+        <h2 id="currentValueDealer">Current Value Dealer:</h2>
+    </div>
+
+    <div>
+        <h2 id="currentValuePlayer">Current Value Player:</h2>
+    </div>
+
+    <div class="cardAreas" id="dealersArea">
+        <!--<img id="dealerCard1" src="images/back.png">
+        <img id="dealerCard2" src="images/C2.png">
+        <img id="dealerCard3" src="images/D3.png">
+        <img id="dealerCard4" src="images/C3.png">-->
+    </div>
+    <div>
+        <h1 id="winLoseMsg"></h1>
+    </div>
+    <div class="cardAreas" id="playersArea">
+        <!--<img id="playerCard1" src="images/HK.png">
+        <img id="playerCard2" src="images/D4.png">
+        <img id="playerCard3" src="images/S4.png">
+        <img id="playerCard4" src="images/HQ.png">-->
+
+    </div>
+
+    <div id="buttonPanel">
+        <button id="deal">Deal</button>
+        <button id="hit">Hit</button>
+        <button id="stand">Stand</button>
+        <button id="reset">Play Again</button>
+        <button onclick="soundPlayPause()">Sound On/Off</button>
+        <!--<button id="test1">playerHand</button>-->
+        <!--<button id="test2">deckArray</button>-->
+    </div><q></q>
+    <div id="bottomNav">
+        <div id="cashDiv">
+            <h3>Cash Amount:</h3>
+            <h1 id="cashAmount">$1000</h1><br />
+        </div>
+        <div id="betDiv">
+            <h3>Bet Amount:</h3>
+            <h1 id="betAmount">$00</h1>
+            <button id="increase">+</button>
+            <button id="decrease">-</button>
+        </div>
+
+    </div>
+    <div id="directionBox">
+        <div id="directionMsg"><h1 id="directionHead">Blackjack</h1><p>The object of the game is to get as close to 21 as possible without going over.</p>
+            <p>Each face card is worth 10. Each ace is worth 1 or 11. Our game is programmed to make them worth 11 by
+                default unless it would cause the player to bust, then it is automatically changed to 1. Every other
+                card is worth its pip value.</p>
+            <p>The player and the dealer are both initially dealt two cards. The first dealer card stays face down until
+                the player stands or busts. The player is allowed to adjust the bet only until the first deal is completed.
+                The player may then request an additional card with the hit button until they exceed 21.</p>
+            <p>Our dealer stands at 17.</p></div>
+        <h1 id="closer">Play Game</h1>
+    </div>
+    <img id="felt" src="images/felt_background.png" style="z-index: 1">
+</div>
+<script src="scripts_v9.js"></script>
+</body>
+</html>
