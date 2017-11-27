@@ -16,11 +16,13 @@ altered a bit by Andy as he was working on the CSS, mostly to add or change the 
     <meta charset="UTF-8">
     <title>BlackJack</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
+    <audio id="backgroundMusic" src="backMusic.mp3"></audio>
+    <audio id="winNoise" src="winMusic.mp3"></audio>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 </head>
 
-<body>
+<body onload="soundPlayPause()">
 <div id="pageContent">
     <div>
         <h2 id="currentValueDealer">Current Value Dealer:</h2>
@@ -46,6 +48,7 @@ altered a bit by Andy as he was working on the CSS, mostly to add or change the 
         <button id="hit">Hit</button>
         <button id="stand">Stand</button>
         <button id="reset">Play Again</button>
+        <button onclick="soundPlayPause()">Sound On/Off</button>
 
     </div>
     <div id="bottomNav">
@@ -58,10 +61,12 @@ altered a bit by Andy as he was working on the CSS, mostly to add or change the 
             <h1 id="betAmount">$00</h1>
             <button id="decrease">-</button>
             <button id="increase">+</button>
-         
+
         </div>
 
     </div>
+    <img id="play" src="images/play.jpg" style="z-index: 2">
+    <img id="pause" src="images/pause.jpg" style="z-index: 2">
     <div id="directionBox">
         <div id="directionMsg"><h1 id="directionHead">Blackjack</h1><p>The object of the game is to get as close to 21 as possible without going over.</p>
             <p>Each face card is worth 10. Each ace is worth 1 or 11. Our game is programmed to make them worth 11 by
@@ -73,6 +78,7 @@ altered a bit by Andy as he was working on the CSS, mostly to add or change the 
             <p>Our dealer stands at 17.</p></div>
         <h1 id="closer">Play Game</h1>
     </div>
+
     <img id="felt" src="images/felt_background.png" style="z-index: 1">
 </div>
 <script src="scripts_v9.js"></script>
