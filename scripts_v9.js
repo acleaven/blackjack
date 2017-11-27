@@ -14,8 +14,8 @@ wrote the game play functions in tandem.
 
 ////DeckObject///////////////////////// This object written by Andy Cleavenger
 
-function DeckObject() { // unshuffledDeck is an array with all the cards in order
-    this.unshuffledDeck = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51];
+function DeckObject() { // object constructor for the gameDeck object
+    this.unshuffledDeck = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51]; // unshuffledDeck is an array with all the cards in order
     this.deckArray = []; // deckArray is an empty array that we will pass cards to during the shuffle function
 
     this.shuffleDeck = function() {
@@ -28,18 +28,14 @@ function DeckObject() { // unshuffledDeck is an array with all the cards in orde
         }
     };
 
-    /*
-    this.getDeck = function() {
-        return this.deckArray; // returns whatever the present deckArray is
-    };*/
 
     this.getCard = function() {
         var shiftCard = this.deckArray.shift(); // stores the value of whatever the first card in deckArray is
         return shiftCard; // returns the value of that card
     };
 
-    this.resetDeck = function() {
-        this.unshuffledDeck = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51];
+    this.resetDeck = function() { // This function redefines the deck back to its original state, so that it can be reshuffled and allow the user to play again
+        this.unshuffledDeck = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51]; // unshuffledDeck is an array with all the cards in order
         this.deckArray = [];
     }
 }
@@ -49,14 +45,10 @@ function DeckObject() { // unshuffledDeck is an array with all the cards in orde
 
 ///PlayerObject///////////////////// This object written by Chris
 
-function PlayerObject() {
+function PlayerObject() { // object constructor for player and dealer objects
     this.hand = []; //sets the hand as an empty array
 
 
-    /*
-    this.getHand = function() {
-        return this.hand; // returns whatever is in the present hand array
-    };*/
 
     this.setHand = function (card) {
         this.hand.push(card); // pushes a card to the hand array
@@ -65,11 +57,6 @@ function PlayerObject() {
     this.resetHandValue = function() {
         this.hand = []; // this resets the hand array to an empty array
     };
-
-    /*
-    this.getBet = function() {
-        return betValue; // this returns the bet value
-    };*/
 
 
     this.getValue = function(index) { // this function determines the face value of each card
@@ -83,7 +70,7 @@ function PlayerObject() {
     };
 
     this.score = function(whichHand) {
-        var x;
+        var x; // a variable that will represent the value of each card in the hand
         var sum = 0; // sets initial score to 0
         var aces = 0; // sets initial count of aces to 0
         for (i=0; i<whichHand.length; i++) { // loops through the following process for every card in the array
@@ -109,7 +96,7 @@ function PlayerObject() {
 
 //BankObject////////////////////// Written by Chris Bonk
 
-function BankObject() {
+function BankObject() { // Object constructor for bank object
 
     var cash = 1000; //sets initial cash amount at $1000
     bet = 100; // sets initial bet amount at $0
@@ -136,70 +123,61 @@ function BankObject() {
     };
 
     this.debtColor = function() {
-        if (cash >= 0) {
-            $('#cashAmount').css({color: "gold"});
-        } if (cash < 0) {
-            $('#cashAmount').css({color: "red"});
+        if (cash >= 0) { // if the amount of available cash is greater than or equal to 0...
+            $('#cashAmount').css({color: "gold"}); // make the cash amount gold in color
+        } if (cash < 0) { // if the amount of available cash is less than 0...
+            $('#cashAmount').css({color: "red"}); // make the cash amount red in color
         }
     };
 
 
     this.winGame = function() {
-        $('#winLoseMsg').text('You win $' + bet.toString() + '!');
+        $('#winLoseMsg').text('You win $' + bet.toString() + '!'); // target the winLoseMsg div and write the bet amount to a string and attach it to a message that says how much the player won
         cash += bet; // adds the bet amount to the available cash
         this.updateCashBet(); // calls the function that updates the betAmount and cashAmount divs in the HTML
-        this.debtColor();
+        this.debtColor(); // changes the color of the cash amount as appropriate
     };
 
     this.drawGame = function() {
-        $('#winLoseMsg').text('You Draw!');
-        this.debtColor();
+        $('#winLoseMsg').text('You Draw!'); // target the winLoseMsg div and write a message to it that tells the user they draw.
+        this.debtColor(); // changes the color of the cash amount as appropriate
 
     };
 
     this.loseGame = function() {
-        $('#winLoseMsg').text('You lose $' + bet.toString() + '!');  // not working at the moment
+        $('#winLoseMsg').text('You lose $' + bet.toString() + '!');  // target the winLoseMsg div and write the bet amount to a string and attach it to a message that says how much the player lost
         cash -= bet; // subtracts the bet amount from the current amount of available cash
         this.updateCashBet(); // calls the function that writes those totals to the betAmount and cashAmount divs
-        if( cash < bet ) { // I'm not sure what the purpose of this is, but it says that if the cash amount is less than the bet amount set the bet to $100...  what is that for?
+        if( cash < bet ) { // If the cash amount is less than the bet amount set the bet to $100
             bet = 100;
             this.updateCashBet(); // calls the function that updates the betAmount and cashAmount divs in the HTML
         }
-        this.debtColor();
+        this.debtColor(); // changes the color of the cash amount as appropriate
 
     };
-
-    /*
-    this.gameOver = function() {
-        if (cash === 0) {
-            $('#winLoseMsg').text('You suck. I took all your money.');
-            this.debtColor();
-
-        }
-    };*/
 
 
 }
 
 //////////////////////////////////
 
-/////playGame////////////////////
-////////playGame/////////////////////// John Morabito and Andy Cleavenger wrote the game play functions below together
 
-$(document).ready(function() {
+////////Game PLay Functions/////////////////////// John Morabito and Andy Cleavenger wrote the game play functions below together
 
-    $('#directionBox').hide().delay(300).slideDown(1500);
-    $('#closer').on('click', function() {
+$(document).ready(function() { // When browser has loaded the document run all of the following functions:
+
+    $('#directionBox').hide().delay(300).slideDown(1500); // This animates in the user directions when the page first loads
+    $('#closer').on('click', function() { // This closes the directions when the user clicks the words "play game"
         $('#directionBox').slideUp(1500);
     });
 
-    /////Instantiated objects:
+    /////Instantiated objects and setup:
     var gameDeck = new DeckObject(); // instantiates the DeckObject
     gameDeck.shuffleDeck(); // shuffles the deck
     var playerHand = new PlayerObject(); // instantiates the PlayerObject as playerHand
     var dealerHand = new PlayerObject(); // instantiates another PlayerObject as dealerHand
     var bank = new BankObject(); // instantiates the BankObject
-    bank.updateCashBet();
+    bank.updateCashBet(); // initializes betting to start at $100
 
 
     $('#hit').hide(); // hides the hit button
@@ -230,30 +208,28 @@ $(document).ready(function() {
     var currentValuePlayer = document.getElementById('currentValuePlayer'); // stores the location of currentValuePlayer div in the HTML into a variable
     var printPlayerScore = function() {
         currentValuePlayer.innerHTML = playerHand.score(playerHand.hand); // sets the innerHTML of that div to show the score of the current player hand
-        $('#currentValuePlayer').css({visibility: "visible"}); // not sure this is necessary, try commenting out and see what happens
+        $('#currentValuePlayer').css({visibility: "visible"}); // Makes the current value of the playerHand visible
     };
 
     var currentValueDealer = document.getElementById('currentValueDealer'); // stores the location of currentValueDealer div in the HTML into a variable
     var printDealerScore = function() {
         currentValueDealer.innerHTML = dealerHand.score(dealerHand.hand); // sets the innerHTML of that div to show the score of the current dealer hand
-        $('#currentValueDealer').css({visibility: "visible"}); // not sure this is necessary, try commenting out and see what happens
+        $('#currentValueDealer').css({visibility: "visible"}); // Makes the current value of the dealerHand visible
     };
 
     var printFirstDscore = function() { // this function prints the score of only the second card in the dealerHand array
         var x;
-        var sum = 0; // don't think we're using this
         x = dealerHand.getValue(dealerHand.hand[1]); // stores the value of the second card in the dealerHand array into a variable
         currentValueDealer.innerHTML = x; // changes the innerHTML of the currentValuePlayer div to show the value of that card
-        $('#currentValueDealer').css({visibility: "visible"}); // not sure this is necessary, try commenting out and see what happens
+        $('#currentValueDealer').css({visibility: "visible"}); // makes the current value of the second dealer card visible
     };
 
     var showDownCard = function() {
-        var shiftCard = gameDeck.getCard();
-        dealerHand.setHand(shiftCard);
-        var dHand = dealerHand.hand;
+        var shiftCard = gameDeck.getCard(); // stores the value of the first card in gameDeck.deckArray into a variable, then...
+        dealerHand.setHand(shiftCard); // pushes the value of that card into the dealerHand array
         $('#dealersArea').prepend('<img class="dealerCards down" src="images/back.png" />');//append is attaching new image tags immediately after opening div tag
-        $('.dealerCards').nextAll().css({position: "absolute", left: "-=55px", zIndex: "-=10"});
-        $('#dealersArea').css({position: "absolute", left:"+=55px"});
+        $('.dealerCards').nextAll().css({position: "absolute", left: "-=55px", zIndex: "-=10"}); // sets the css of each successive image to appear on top of, and 55 pixels offset from the previous card
+        $('#dealersArea').css({position: "absolute", left:"+=55px"}); // moves the card area divs the same offset amount as the card offsets to make cards appear to stack left to right
     };
 
     $('#increase').on('click', function() { // when user clicks the increase button...
@@ -277,7 +253,7 @@ $(document).ready(function() {
 
     };
 
-    var deal = function() { // this is the first function used to start the game
+    var deal = function() {
         printPlayerCards(); // calls function that prints the first card to the playerHand
         showDownCard(); // calls function that shows a down card in the first card spot for the dealer
         printPlayerCards(); // calls function that prints the second card to the playerHand
@@ -303,54 +279,42 @@ $(document).ready(function() {
     };
 
 
-    $('#test1').on('click', function() { // not currently using this. Was just a test button to check the contents of arrays in an alert box
-        alert(playerHand.hand);
-    });
-
-    $('#test2').on('click', function() { // not currently using this. Was just a test button to check the contents of arrays in an alert box
-        alert(gameDeck.deckArray);
-    });
-
     $('#deal').on('click', function() { // calls the deal function when user clicks the deal button
         deal();
-        //$('#increase').css({display: "none"});
-        //$('#decrease').css({display: "none"});
-        $(this).css({display: "none"}); // hides the deal button I think?
+        $(this).css({display: "none"}); // hides the deal button
     });
 
 
     $('#hit').on('click', function() { // calls the hitMe function when user clicks hit button
         hitMe();
 
-        $('#increase').hide();
-        $('#decrease').hide();
+        $('#increase').hide(); // hides the increase bet button
+        $('#decrease').hide(); // hides the decrease bet button
 
         var pHand = playerHand.score(playerHand.hand); // stores the current playerHand in a variable
         var dHand = dealerHand.score(dealerHand.hand); // stores the current  dealerHand in a variable
 
 
-
-        if (pHand > 21) {
-            finishDealerHand();
-            if (dHand > 21) {
-                bank.drawGame();
-                //bank.debtColor();
-                $('#hit').hide();
-                $('#stand').hide();
-                $('#reset').show();
+        // the logic below checks the result of the scores
+        if (pHand > 21) { // if the playerHand is greater than 21...
+            finishDealerHand(); // call the finishDealerHand function to see what the dealer gets
+            if (dHand > 21) { // if the dealer also busts...
+                bank.drawGame(); // result is a draw
+                $('#hit').hide(); // hide the hit button
+                $('#stand').hide(); // hide the stand button
+                $('#reset').show(); // show the play again button
             }
 
-            if (dHand <= 21) {
-                bank.loseGame();
-                //bank.debtColor();
-                $('#hit').hide();
-                $('#stand').hide();
-                $('#reset').show();
+            if (dHand <= 21) { // if the dealer's hand is less than or equal to 21
+                bank.loseGame(); // result is a loss
+                $('#hit').hide(); // hide the hit button
+                $('#stand').hide(); // hide the stand button
+                $('#reset').show(); // show the play again button
             }
-        } if (pHand === 21) { //stand function takes over from here
-            return;
-        } if (pHand < 21) {
-            return;
+        } if (pHand === 21) { // if playerHand is equal to 21 it is assumed they will hit the stand button, so...
+            return; // do nothing
+        } if (pHand < 21) { // if playerHand is less than 21 it is assumed they still want the option to hit, so...
+            return; // do nothing
         }
 
     });
@@ -360,8 +324,8 @@ $(document).ready(function() {
         $('#hit').hide(); // hide the hit button
         $('#stand').hide(); // hide the stand button
         $('#reset').show(); // show the Play Again button
-        $('#increase').hide();
-        $('#decrease').hide();
+        $('#increase').hide(); // hide the increase bet button
+        $('#decrease').hide(); // hide the decrease bet button
 
         var pHand = playerHand.score(playerHand.hand); // store the score of the player in a variable
         var dHand = dealerHand.score(dealerHand.hand); // store the score of the dealer in a variable
@@ -369,37 +333,37 @@ $(document).ready(function() {
         if (pHand <= 21) { // if the player's score is less than or equal to 21...
             if (pHand > dHand) { // and if the player's score is more than the dealer's score...
                 bank.winGame(); // call the bank's winGame method
-                //bank.debtColor();
+
             }
             else {
                 if (dHand <= 21) { // if the dealer's hand is less than 21...
                     if (dHand === pHand) { // and the dealer and player both have the same score...
                         bank.drawGame(); // calle the bank's drawGame method
-                        //bank.debtColor();
+
                     }
                     else {
                         bank.loseGame(); // any other result (dealer score > player score is only other option) call the bank's loseGame method
-                        //bank.debtColor();
+
                     }
                 }
             }
             if (dHand > 21) { // if the dealer score is over 21...
                 bank.winGame(); // call the bank's winGame method
-                //bank.debtColor();
+
             }
         }
         else { // if the player's score is over 21...
             bank.loseGame(); // call the bank's loseGame method
-            //bank.debtColor();
+
         }
     });
 
 
     $("#reset").click(function(){   // resets the cards and score, but not the cash amount
-        $('#increase').show();
-        $('#decrease').show();
-        gameDeck.resetDeck();
-        gameDeck.shuffleDeck();
+        $('#increase').show(); // show the increase bet button
+        $('#decrease').show(); // show the decrease bet button
+        gameDeck.resetDeck(); // redefine the deck to it's original state
+        gameDeck.shuffleDeck(); // shuffle the deck
         playerHand.resetHandValue(); // calls the resetHandValue method to define the playerHand array as empty
         dealerHand.resetHandValue(); // calls the resetHandValue method to define the dealerHand array as empty
         $("#playersArea").empty(); // empties the playersArea div of all card img elements
@@ -415,7 +379,6 @@ $(document).ready(function() {
 
 });
 
-/////////////////////
 /////////////////////////////////
 
 /*
