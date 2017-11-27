@@ -39,43 +39,6 @@ p {
     visibility: hidden;
 }
 
-
-#playerCard1 {
-    height: 209px;
-    width: 150px;
-    position: relative;
-    z-index: 2;
-    left: 0px;
-
-}
-
-#playerCard2 {
-    height: 209px;
-    width: 150px;
-    position: absolute;
-    z-index: 2;
-    left: 50px;
-}
-
-#playerCard3 {
-    height: 209px;
-    width: 150px;
-    position: absolute;
-    z-index: 2;
-    left: 100px;
-}
-
-#playerCard4 {
-    height: 209px;
-    width: 150px;
-    position: absolute;
-    z-index: 2;
-    left: 150px;
-
-
-
-}
-
 #playersArea {
     background-color: black;
     height: 209px;
@@ -84,9 +47,7 @@ p {
     top: 420px;
     left: 450px;
     visibility: visible;
-    /*padding-top: 100px;
-    padding-bottom: 150px;
-    */
+
 }
 
 #dealersArea {
@@ -96,7 +57,7 @@ p {
     position: absolute;
     left: 450px;
     visibility: visible;
-    /*padding-bottom: 150px;*/
+
 }
 
 .playerCards {
@@ -113,49 +74,6 @@ p {
     position: absolute;
     z-index: 200;
 }
-
-
-
-#dealerCard1 {
-    height: 209px;
-    width: 150px;
-    position: absolute;
-    z-index: 3;
-    left: 1px;
-
-    padding-bottom: 150px;
-}
-
-#dealerCard2 {
-    height: 209px;
-    width: 150px;
-    position: absolute;
-    z-index: 3;
-    left: 50px;
-
-    padding-bottom: 150px;
-}
-
-#dealerCard3 {
-    height: 209px;
-    width: 150px;
-    position: absolute;
-    z-index: 3;
-    left: 100px;
-
-    padding-bottom: 150px;
-}
-
-#dealerCard4 {
-    height: 209px;
-    width: 150px;
-    position: absolute;
-    z-index: 3;
-    left: 150px;
-
-    padding-bottom: 150px;
-}
-
 
 
 #buttonPanel {
@@ -184,11 +102,7 @@ p {
     top: -100px;
     left: 180px;
     line-height: 50%;
-    /*width: 100px;
-    border-width: 5px;
-    border-style: dashed;
-    background-color: lightgreen;
-    float: left;*/
+
 }
 
 #betDiv {
@@ -198,11 +112,7 @@ p {
     line-height: 50%;
     top: -200px;
     left: 950px;
-    /*width: 100px;
-    border-width: 5px;
-    border-style: dashed;
-    background-color: lightgreen;
-    float: right;*/
+
 }
 
 #bottomNav {
