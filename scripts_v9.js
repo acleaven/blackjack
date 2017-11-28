@@ -110,6 +110,8 @@ function BankObject() { // Object constructor for bank object
 
     var cash = 1000; //sets initial cash amount at $1000
     bet = 100; // sets initial bet amount at $0
+    var winSound = new Audio("winMusic.mp3"); // buffers automatically when created
+    var loseSound = new Audio ("lossMusic.mp3");
 
     this.increaseBet = function() {
         if (bet < cash) { // As long as the bet is less than the available amount of cash...
@@ -147,6 +149,7 @@ function BankObject() { // Object constructor for bank object
         cash += bet; // adds the bet amount to the available cash
         this.updateCashBet(); // calls the function that updates the betAmount and cashAmount divs in the HTML
         this.debtColor(); // changes the color of the cash amount as appropriate
+        winSound.play();
     };
 
     this.drawGame = function() {
@@ -166,6 +169,7 @@ function BankObject() { // Object constructor for bank object
             this.updateCashBet(); // calls the function that updates the betAmount and cashAmount divs in the HTML
         }
         this.debtColor(); // changes the color of the cash amount as appropriate
+        loseSound.play();
 
     };
 
