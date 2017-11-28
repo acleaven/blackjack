@@ -16,17 +16,17 @@ altered a bit by Andy as he was working on the CSS, mostly to add or change the 
     <meta charset="UTF-8">
     <title>BlackJack</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
-    <audio id="backgroundMusic" src="backMusic.mp3"></audio>
-    <audio id="winNoise" src="winMusic.mp3"></audio>
+    <audio id="backgroundMusic" src="backMusic.mp3"></audio> <!-- Chris implemented all music and sound -->
+    <audio id="winNoise" src="winMusic.mp3"></audio> <!-- Chris implemented all music and sound -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 </head>
 
-<body onload="soundPlayPause()">
+<body onload="soundPlayPause()"> <!-- Chris implemented all music and sound -->
 
 
 
-<div id="pageContent">
+<div id="pageContent"> <!-- Chris and John wrote most of the structure of the body below, Andy added most of the IDs and classes as he was writing the game play functions -->
     <div>
         <h2 id="currentValueDealer">Current Value Dealer:</h2>
     </div>
@@ -51,7 +51,7 @@ altered a bit by Andy as he was working on the CSS, mostly to add or change the 
         <button id="hit">Hit</button>
         <button id="stand">Stand</button>
         <button id="reset">Play Again</button>
-        <!--<button onclick="soundPlayPause()">Sound On/Off</button>-->
+
 
     </div>
     <div id="bottomNav">
@@ -71,7 +71,7 @@ altered a bit by Andy as he was working on the CSS, mostly to add or change the 
 
 
 
-    <div id="directionBox">
+    <div id="directionBox"> <!-- Andy created the User Direction box -->
         <div id="directionMsg"><h1 id="directionHead">Blackjack</h1><p>The object of the game is to get as close to 21 as possible without going over.</p>
             <p>Each face card is worth 10. Each ace is worth 1 or 11. Our game is programmed to make them worth 11 by
                 default unless it would cause the player to bust, then it is automatically changed to 1. Every other
@@ -84,7 +84,7 @@ altered a bit by Andy as he was working on the CSS, mostly to add or change the 
     </div>
 
 
-        <img id="play" src="images/play.jpg" style="z-index: 2">
+        <img id="play" src="images/play.jpg" style="z-index: 2"> <!-- John added the on/off buttons to the elevator music. Not a fan, I guess. -->
         <img id="pause" src="images/pause.jpg" style="z-index: 2">
 
 
