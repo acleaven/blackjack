@@ -9,6 +9,14 @@ Division of tasks:
 Andy wrote the DeckObject, including the shuffleDeck() function, as well as the getValue() and score()
 portions of the PlayerObject. Chris wrote the rest of the PlayerObject, and all of the BankObject. John and Andy
 wrote the game play functions in tandem.
+
+Image sources:
+The card images and felt tabletop image were purchased at bigstock.com.
+The play and pause buttons for the music were obtained from thenounproject.com and used in accordance with their usage policy.
+
+The music came from
+
+
 */
 
 
@@ -133,6 +141,7 @@ function BankObject() { // Object constructor for bank object
 
     this.winGame = function() {
         $('#winLoseMsg').text('You win $' + bet.toString() + '!'); // target the winLoseMsg div and write the bet amount to a string and attach it to a message that says how much the player won
+        $('#winLoseMsg').hide().slideDown();
         cash += bet; // adds the bet amount to the available cash
         this.updateCashBet(); // calls the function that updates the betAmount and cashAmount divs in the HTML
         this.debtColor(); // changes the color of the cash amount as appropriate
@@ -140,12 +149,14 @@ function BankObject() { // Object constructor for bank object
 
     this.drawGame = function() {
         $('#winLoseMsg').text('You Draw!'); // target the winLoseMsg div and write a message to it that tells the user they draw.
+        $('#winLoseMsg').hide().slideDown();
         this.debtColor(); // changes the color of the cash amount as appropriate
 
     };
 
     this.loseGame = function() {
         $('#winLoseMsg').text('You lose $' + bet.toString() + '!');  // target the winLoseMsg div and write the bet amount to a string and attach it to a message that says how much the player lost
+        $('#winLoseMsg').hide().slideDown();
         cash -= bet; // subtracts the bet amount from the current amount of available cash
         this.updateCashBet(); // calls the function that writes those totals to the betAmount and cashAmount divs
         if( cash < bet ) { // If the cash amount is less than the bet amount set the bet to $100
@@ -169,6 +180,8 @@ $(document).ready(function() { // When browser has loaded the document run all o
     $('#cashDiv').hide();
     $('#betDiv').hide();
     $('#buttonPanel').hide();
+    $('#play').hide();
+    $('#pause').hide();
 
 
     $('#directionBox').hide().delay(300).slideDown(1500); // This animates in the user directions when the page first loads
@@ -177,6 +190,7 @@ $(document).ready(function() { // When browser has loaded the document run all o
         $('#cashDiv').show();
         $('#betDiv').show();
         $('#buttonPanel').show();
+        $('#pause').show();
     });
 
     /////Instantiated objects and setup:
@@ -389,10 +403,36 @@ $(document).ready(function() { // When browser has loaded the document run all o
 
 /////////////////////////////////
 
-/*
 
-4. We need directions for player div
-5. card entrance animations (jQuery)
-6. Change appearance of buttons
 
- */
+//Background Music/////////////////////////////// Written by Chris Bonk
+
+function soundPlayPause() {     //plays background music for the game
+    var backgroundMusic = document.getElementById("backgroundMusic"); //calls the audio from the HTML page
+    if (backgroundMusic.paused) { //if the music button is not paused, play music
+        backgroundMusic.play();
+    } else {
+        backgroundMusic.pause(); //else pause the music.
+    }
+}
+///////////////////////////////////
+
+
+
+
+////////Music play/pause button//////////////////// written by John Morabito
+
+$('#pause').click(function() { //when the pause image is clicked run this function
+    var backgroundMusic = document.getElementById("backgroundMusic"); //gets the background song to put into a variable
+    backgroundMusic.pause(); //song is paused
+    $('#pause').hide(); //pause image is hidden
+    $('#play').show(); //shows play image in the place of the pause image
+});
+
+$('#play').click(function() { //when the pause image is clicked run this function
+    var backgroundMusic = document.getElementById("backgroundMusic"); //gets the background song to put into a variable
+    backgroundMusic.play(); //song is played
+    $('#play').hide(); //play image is hidden
+    $('#pause').show(); //pause image is shown
+});
+//////////////////////////////////
