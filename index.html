@@ -23,6 +23,9 @@ altered a bit by Andy as he was working on the CSS, mostly to add or change the 
 </head>
 
 <body onload="soundPlayPause()">
+
+
+
 <div id="pageContent">
     <div>
         <h2 id="currentValueDealer">Current Value Dealer:</h2>
@@ -48,7 +51,7 @@ altered a bit by Andy as he was working on the CSS, mostly to add or change the 
         <button id="hit">Hit</button>
         <button id="stand">Stand</button>
         <button id="reset">Play Again</button>
-        <button onclick="soundPlayPause()">Sound On/Off</button>
+        <!--<button onclick="soundPlayPause()">Sound On/Off</button>-->
 
     </div>
     <div id="bottomNav">
@@ -65,8 +68,12 @@ altered a bit by Andy as he was working on the CSS, mostly to add or change the 
         </div>
 
     </div>
-    <img id="play" src="images/play.jpg" style="z-index: 2">
-    <img id="pause" src="images/pause.jpg" style="z-index: 2">
+
+    <div id='musicButtons'>
+        <img id="play" src="images/play.jpg" style="z-index: 2">
+        <img id="pause" src="images/pause.jpg" style="z-index: 2">
+    </div>
+
     <div id="directionBox">
         <div id="directionMsg"><h1 id="directionHead">Blackjack</h1><p>The object of the game is to get as close to 21 as possible without going over.</p>
             <p>Each face card is worth 10. Each ace is worth 1 or 11. Our game is programmed to make them worth 11 by
