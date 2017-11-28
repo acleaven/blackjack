@@ -1,0 +1,71 @@
+//BankObject////////////////////// Written by Chris Bonk
+
+function BankObject() { // Object constructor for bank object
+
+    var cash = 1000; //sets initial cash amount at $1000
+    bet = 100; // sets initial bet amount at $0
+    var winSound = new Audio("winMusic.mp3"); // buffers automatically when created
+    var loseSound = new Audio ("lossMusic.mp3");
+
+    this.increaseBet = function() {
+        if (bet < cash) { // As long as the bet is less than the available amount of cash...
+            bet += 100; // you may increase the bet in increments of $100
+            this.updateCashBet(); // calls the function to write the current bet to the betAmount div
+        }
+    };
+
+    this.decreaseBet = function() {
+        if (bet > 100) { // As long as bet is more than $100...
+            bet -= 100; // you may decrease the bet in increments of $100
+            this.updateCashBet(); // calls the function to write the current bet to the betAmount div
+        }
+    };
+
+
+    this.updateCashBet = function() {
+        $('#betAmount').text('$' + bet.toString()); // targets the betAmount div in the HTML and writes the present bet amount to it
+        $('#cashAmount').text('$' + cash.toString()); //targets the cashAmount div in the HTML and writes the present cash amount to it
+
+    };
+
+    this.debtColor = function() {
+        if (cash >= 0) { // if the amount of available cash is greater than or equal to 0...
+            $('#cashAmount').css({color: "gold"}); // make the cash amount gold in color
+        } if (cash < 0) { // if the amount of available cash is less than 0...
+            $('#cashAmount').css({color: "red"}); // make the cash amount red in color
+        }
+    };
+
+
+    this.winGame = function() {
+        $('#winLoseMsg').text('You win $' + bet.toString() + '!'); // target the winLoseMsg div and write the bet amount to a string and attach it to a message that says how much the player won
+        $('#winLoseMsg').hide().slideDown();
+        cash += bet; // adds the bet amount to the available cash
+        this.updateCashBet(); // calls the function that updates the betAmount and cashAmount divs in the HTML
+        this.debtColor(); // changes the color of the cash amount as appropriate
+        winSound.play();
+    };
+
+    this.drawGame = function() {
+        $('#winLoseMsg').text('You Draw!'); // target the winLoseMsg div and write a message to it that tells the user they draw.
+        $('#winLoseMsg').hide().slideDown();
+        this.debtColor(); // changes the color of the cash amount as appropriate
+
+    };
+
+    this.loseGame = function() {
+        $('#winLoseMsg').text('You lose $' + bet.toString() + '!');  // target the winLoseMsg div and write the bet amount to a string and attach it to a message that says how much the player lost
+        $('#winLoseMsg').hide().slideDown();
+        cash -= bet; // subtracts the bet amount from the current amount of available cash
+        this.updateCashBet(); // calls the function that writes those totals to the betAmount and cashAmount divs
+        if( cash < bet ) { // If the cash amount is less than the bet amount set the bet to $100
+            bet = 100;
+            this.updateCashBet(); // calls the function that updates the betAmount and cashAmount divs in the HTML
+        }
+        this.debtColor(); // changes the color of the cash amount as appropriate
+        loseSound.play();
+
+    };
+
+
+}
