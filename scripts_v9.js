@@ -51,7 +51,7 @@ function DeckObject() { // object constructor for the gameDeck object
 //////////////////////////////////
 
 
-///PlayerObject///////////////////// This object written by Chris
+///PlayerObject///////////////////// This object written by Chris Bonk
 
 function PlayerObject() { // object constructor for player and dealer objects
     this.hand = []; //sets the hand as an empty array
@@ -173,26 +173,29 @@ function BankObject() { // Object constructor for bank object
 //////////////////////////////////
 
 
-////////Game PLay Functions/////////////////////// John Morabito and Andy Cleavenger wrote the game play functions below together
+////////Game PLay Functions/////////////////////// John Morabito and Andy Cleavenger wrote the game play functions. Each block credited with initials.
 
 $(document).ready(function() { // When browser has loaded the document run all of the following functions:
 
-    $('#cashDiv').hide();
+    /////Morabito
+    $('#cashDiv').hide(); // this block of code hides all of the game play interface on load except for the user directions
     $('#betDiv').hide();
     $('#buttonPanel').hide();
     $('#play').hide();
     $('#pause').hide();
 
-
+    //////Cleavenger
     $('#directionBox').hide().delay(300).slideDown(1500); // This animates in the user directions when the page first loads
     $('#closer').on('click', function() { // This closes the directions when the user clicks the words "play game"
         $('#directionBox').slideUp(1500);
-        $('#cashDiv').show();
-        $('#betDiv').show();
-        $('#buttonPanel').show();
-        $('#pause').show();
+        $('#cashDiv').show(); // shows the cashAmount div
+        $('#betDiv').show(); // shows the betAmount div
+        $('#buttonPanel').show(); // shows the button panel
+        $('#pause').show(); // shows the pause button for the music
     });
 
+
+    //////Cleavenger
     /////Instantiated objects and setup:
     var gameDeck = new DeckObject(); // instantiates the DeckObject
     gameDeck.shuffleDeck(); // shuffles the deck
@@ -207,6 +210,7 @@ $(document).ready(function() { // When browser has loaded the document run all o
     $('#reset').hide(); // hides the Play Again button
 
 
+    //////Cleavenger
     var printPlayerCards = function() {
         var shiftCard = gameDeck.getCard(); // stores the value of a card from gameDeck in a variable
         playerHand.setHand(shiftCard); // calls the setHand method of the PlayerObject to push that card to the playerHand array
@@ -217,6 +221,7 @@ $(document).ready(function() { // When browser has loaded the document run all o
         $('#playersArea').css({position: "absolute", left:"+=55px"}); // moves the card area divs the same offset amount as the card offsets to make cards appear to stack left to right
     };
 
+    //////Cleavenger
     var printDealerCards = function() {
         var shiftCard = gameDeck.getCard(); // stores the value of a card from gameDeck in a variable
         dealerHand.setHand(shiftCard); // calls the setHand method of the PlayerObject to push that card to the dealerHand array
@@ -227,18 +232,21 @@ $(document).ready(function() { // When browser has loaded the document run all o
         $('#dealersArea').css({position: "absolute", left:"+=55px"}); // moves the card area divs the same offset amount as the card offsets to make cards appear to stack left to right
     };
 
+    //////Cleavenger
     var currentValuePlayer = document.getElementById('currentValuePlayer'); // stores the location of currentValuePlayer div in the HTML into a variable
     var printPlayerScore = function() {
         currentValuePlayer.innerHTML = playerHand.score(playerHand.hand); // sets the innerHTML of that div to show the score of the current player hand
         $('#currentValuePlayer').css({visibility: "visible"}); // Makes the current value of the playerHand visible
     };
 
+    //////Cleavenger
     var currentValueDealer = document.getElementById('currentValueDealer'); // stores the location of currentValueDealer div in the HTML into a variable
     var printDealerScore = function() {
         currentValueDealer.innerHTML = dealerHand.score(dealerHand.hand); // sets the innerHTML of that div to show the score of the current dealer hand
         $('#currentValueDealer').css({visibility: "visible"}); // Makes the current value of the dealerHand visible
     };
 
+    //////Cleavenger
     var printFirstDscore = function() { // this function prints the score of only the second card in the dealerHand array
         var x;
         x = dealerHand.getValue(dealerHand.hand[1]); // stores the value of the second card in the dealerHand array into a variable
@@ -246,6 +254,7 @@ $(document).ready(function() { // When browser has loaded the document run all o
         $('#currentValueDealer').css({visibility: "visible"}); // makes the current value of the second dealer card visible
     };
 
+    //////Cleavenger
     var showDownCard = function() {
         var shiftCard = gameDeck.getCard(); // stores the value of the first card in gameDeck.deckArray into a variable, then...
         dealerHand.setHand(shiftCard); // pushes the value of that card into the dealerHand array
@@ -261,6 +270,7 @@ $(document).ready(function() { // When browser has loaded the document run all o
         bank.decreaseBet(); // call the bank's decreaseBet method
     });
 
+    //////Cleavenger
     var flipCard = function() { // this function flips the first card in the dealerArea div
         var dHand = dealerHand.hand; // stores the current dealerHand array into a variable
         var index = dHand[0]; // stores the first card in the dealerHand array into a variable
@@ -269,12 +279,14 @@ $(document).ready(function() { // When browser has loaded the document run all o
     };
 
 
+    //////Cleavenger
     var hitMe = function() {
         printPlayerCards(); // calls function that prints a single card to the playerHand
         printPlayerScore(); // calls a function that adds the amount of that card to the present sum
 
     };
 
+    //////Cleavenger
     var deal = function() {
         printPlayerCards(); // calls function that prints the first card to the playerHand
         showDownCard(); // calls function that shows a down card in the first card spot for the dealer
@@ -287,11 +299,13 @@ $(document).ready(function() { // When browser has loaded the document run all o
         $('#stand').show(); // shows the stand button
     };
 
+    //////Cleavenger
     var hitDealer = function() {
         printDealerCards(); // calls function that prints a single card to the dealerHand
         printDealerScore(); // calls a function that adds the amount of that card to the present sum
     };
 
+    //////Cleavenger
     var finishDealerHand = function() {
         flipCard(); // calls function that flips the down card
         while (dealerHand.score(dealerHand.hand) < 17) { // while the dealer has a score of less than 17...
@@ -300,13 +314,14 @@ $(document).ready(function() { // When browser has loaded the document run all o
         }
     };
 
-
+    //////Cleavenger
     $('#deal').on('click', function() { // calls the deal function when user clicks the deal button
         deal();
         $(this).css({display: "none"}); // hides the deal button
     });
 
 
+    //////Cleavenger
     $('#hit').on('click', function() { // calls the hitMe function when user clicks hit button
         hitMe();
 
@@ -341,6 +356,7 @@ $(document).ready(function() { // When browser has loaded the document run all o
 
     });
 
+    //////Cleavenger
     $('#stand').on('click', function() { // when user clicks on stand button...
         finishDealerHand(); // call the function that completes the dealerHand and flips the first card
         $('#hit').hide(); // hide the hit button
@@ -380,7 +396,7 @@ $(document).ready(function() { // When browser has loaded the document run all o
         }
     });
 
-
+    //////Morabito
     $("#reset").click(function(){   // resets the cards and score, but not the cash amount
         $('#increase').show(); // show the increase bet button
         $('#decrease').show(); // show the decrease bet button
