@@ -5,14 +5,11 @@ Chris Bonk
 Andy Cleavenger
 John Morabito
 
-Division of tasks:
-Andy wrote the DeckObject, including the shuffleDeck() function, as well as the getValue() and score()
-portions of the PlayerObject. Chris wrote the rest of the PlayerObject, and all of the BankObject. John and Andy
-wrote the game play functions in tandem.
+Division of tasks is detailed throughout the code.
 
 Image sources:
 The card images and felt tabletop image were purchased at bigstock.com.
-The play and pause buttons for the music were obtained from thenounproject.com and used in accordance with their usage policy.
+The play and pause buttons for the music were obtained from thenounproject.com and used in accordance with their Creative Commons licesnse.
 
 The elevator music came from http://www.orangefreesounds.com/elevator-music/.
 The song is copyrighted and permitted for commercial use under license “Attribution 3.0 Unported (CC BY 3.0)“
@@ -24,7 +21,6 @@ It is copyrighted and used here in accordance with a Creative Commons license.
 
 The losing horn sound effect came from https://www.youtube.com/watch?v=_asNhzXq72w
 It was posted there for free use by user profile Gaming Sound FX
-
 
 */
 
@@ -186,7 +182,7 @@ function BankObject() { // Object constructor for bank object
 //////////////////////////////////
 
 
-////////Game PLay Functions/////////////////////// John Morabito and Andy Cleavenger wrote the game play functions. Each block credited with initials.
+////////Game PLay Functions/////////////////////// Authorship as indicated above each block.
 
 $(document).ready(function() { // When browser has loaded the document run all of the following functions:
 
@@ -218,6 +214,7 @@ $(document).ready(function() { // When browser has loaded the document run all o
     bank.updateCashBet(); // initializes betting to start at $100
 
 
+    ////////Morabito
     $('#hit').hide(); // hides the hit button
     $('#stand').hide(); // hides the stand button
     $('#reset').hide(); // hides the Play Again button
@@ -276,6 +273,7 @@ $(document).ready(function() { // When browser has loaded the document run all o
         $('#dealersArea').css({position: "absolute", left:"+=55px"}); // moves the card area divs the same offset amount as the card offsets to make cards appear to stack left to right
     };
 
+    ////////Bonk
     $('#increase').on('click', function() { // when user clicks the increase button...
         bank.increaseBet(); // call the bank's increaseBet method
     });
@@ -340,7 +338,6 @@ $(document).ready(function() { // When browser has loaded the document run all o
 
         $('#increase').hide(); // hides the increase bet button
         $('#decrease').hide(); // hides the decrease bet button
-
         var pHand = playerHand.score(playerHand.hand); // stores the current playerHand in a variable
         var dHand = dealerHand.score(dealerHand.hand); // stores the current  dealerHand in a variable
 
