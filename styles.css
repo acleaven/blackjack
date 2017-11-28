@@ -230,14 +230,16 @@ p {
 
 #play{
     width: 30px;
-    position: relative;
+    position: absolute;
     left: 1200px;
-    top: 520px;
+    top: 620px;
+    cursor: pointer;
 }
 
 #pause{
     width: 30px;
-    position: relative;
+    position: absolute;
     left: 1200px;
-    top: 520px;
+    top: 620px;
+    cursor: pointer;
 }
