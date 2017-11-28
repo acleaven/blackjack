@@ -14,9 +14,16 @@ Image sources:
 The card images and felt tabletop image were purchased at bigstock.com.
 The play and pause buttons for the music were obtained from thenounproject.com and used in accordance with their usage policy.
 
-The music came from http://www.orangefreesounds.com/elevator-music/.
+The elevator music came from http://www.orangefreesounds.com/elevator-music/.
 The song is copyrighted and permitted for commercial use under license “Attribution 3.0 Unported (CC BY 3.0)“
 The artist is Kevin Macleod, and it is used here in accordance with a Creative Commons license.
+
+The cash register sound effect came from http://www.orangefreesounds.com/cash-register-sound/
+The sound effect is permitted for non-commercial use under license “Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)”
+It is copyrighted and used here in accordance with a Creative Commons license.
+
+The losing horn sound effect came from https://www.youtube.com/watch?v=_asNhzXq72w
+It was posted there for free use by user profile Gaming Sound FX
 
 
 */
