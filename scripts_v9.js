@@ -14,7 +14,9 @@ Image sources:
 The card images and felt tabletop image were purchased at bigstock.com.
 The play and pause buttons for the music were obtained from thenounproject.com and used in accordance with their usage policy.
 
-The music came from
+The music came from http://www.orangefreesounds.com/elevator-music/.
+The song is copyrighted and permitted for commercial use under license “Attribution 3.0 Unported (CC BY 3.0)“
+The artist is Kevin Macleod, and it is used here in accordance with a Creative Commons license.
 
 
 */
